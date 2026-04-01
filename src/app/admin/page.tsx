@@ -2,7 +2,6 @@ import React from 'react';
 import { getSession } from '../../lib/actions';
 import { redirect } from 'next/navigation';
 import prisma from '../../lib/prisma';
-import type { User } from '@prisma/client';
 
 export default async function AdminPage() {
   const sessionUser = await getSession();
@@ -44,7 +43,7 @@ export default async function AdminPage() {
             </tr>
           </thead>
           <tbody>
-            {allUsers.map((u: User) => (
+            {allUsers.map((u: { id: string; name: string | null; email: string; role: string; createdAt: Date }) => (
               <tr key={u.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                 <td style={{ padding: '12px', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>...{u.id.slice(-6)}</td>
                 <td style={{ padding: '12px', fontWeight: 600 }}>{u.name || 'Unknown'}</td>
