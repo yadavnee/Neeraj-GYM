@@ -43,7 +43,7 @@ export default async function AdminPage() {
             </tr>
           </thead>
           <tbody>
-            {allUsers.map(u => (
+            {allUsers.map((u: any) => (
               <tr key={u.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                 <td style={{ padding: '12px', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>...{u.id.slice(-6)}</td>
                 <td style={{ padding: '12px', fontWeight: 600 }}>{u.name || 'Unknown'}</td>
