@@ -3,6 +3,7 @@ import { getSession } from '../../lib/actions';
 import { redirect } from 'next/navigation';
 import prisma from '../../lib/prisma';
 import Link from 'next/link';
+import type { Booking } from '@prisma/client';
 
 export default async function DashboardPage() {
   const sessionUser = await getSession();
@@ -27,7 +28,7 @@ export default async function DashboardPage() {
           <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', color: 'var(--accent-neon-red)' }}>YOUR SESSIONS</h3>
           {bookings.length > 0 ? (
             <ul style={{ listStyle: 'none', padding: 0 }}>
-              {bookings.map((b: any) => (
+              {bookings.map((b: Booking) => (
                 <li key={b.id} style={{ padding: '12px', background: 'rgba(255,255,255,0.05)', marginBottom: '8px', borderRadius: '8px', borderLeft: '4px solid var(--accent-electric-blue)' }}>
                   <strong>{b.className}</strong>
                   <br />
